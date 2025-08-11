@@ -41,7 +41,13 @@ project-root/
 │  └─ schema.sql
 ├─ api-spec/              # OpenAPI 명세
 ├─ infra/                 # IaC (Cloudflare, Supabase 설정)
-├─ handbook/              # 문서 포털 (MkDocs)
+├─ docs/                  # 프로젝트 문서
+│  ├─ guides/             # 개발 가이드들
+│  │  └─ flutter-supabase-auth-tutorial.md
+│  ├─ DEVELOPMENT.md      # 개발 환경 설정
+│  └─ INFRASTRUCTURE.md   # 인프라 구조
+├─ api-spec/              # OpenAPI 명세
+├─ infra/                 # IaC (Cloudflare, Supabase 설정)
 └─ README.md
 ```
 
@@ -173,22 +179,18 @@ npm install
 npx wrangler dev
 ```
 
-## 🔧 개발 가이드
+## 📚 문서
 
-### Supabase 설정
-1. 프로젝트 생성 후 `supabase/schema.sql` 실행
-2. Authentication > Settings에서 이메일 템플릿 설정
-3. Row Level Security (RLS) 정책 확인
+### 개발 가이드
+- **[개발 가이드 목록](docs/guides/README.md)** - 모든 가이드의 목록과 개요
+- **[Flutter + Supabase Auth 튜토리얼](docs/guides/flutter-supabase-auth-tutorial.md)** - 인증 시스템 구현 가이드
+- **[개발 환경 설정](docs/DEVELOPMENT.md)** - 전체 프로젝트 개발 환경
+- **[인프라 구조](docs/INFRASTRUCTURE.md)** - 인프라 아키텍처 및 설정
 
-### Flutter 개발
-- `lib/services/supabase_service.dart` - Supabase 클라이언트 래퍼
-- `lib/providers/auth_provider.dart` - 인증 상태 관리
-- `lib/screens/` - UI 화면들
-
-### BFF 개발
-- `src/lib/supabase.ts` - Supabase 클라이언트 설정
-- `src/middleware/auth.ts` - JWT 인증 미들웨어
-- `src/routes/auth.ts` - 인증 API 엔드포인트
+### 빠른 참조
+- **Supabase 설정**: 프로젝트 생성 후 `supabase/schema.sql` 실행
+- **Flutter 개발**: `lib/services/supabase_service.dart` - Supabase 클라이언트 래퍼
+- **BFF 개발**: `src/middleware/auth.ts` - JWT 인증 미들웨어
 
 ## 🚀 배포
 
