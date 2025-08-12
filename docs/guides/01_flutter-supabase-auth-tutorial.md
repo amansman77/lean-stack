@@ -14,15 +14,15 @@
 
 ## 프로젝트 개요
 
-이 가이드는 Flutter Web을 사용하여 Supabase Auth와 연계된 회원가입/로그인 시스템을 구축하는 방법을 설명합니다.
+이 가이드는 Flutter Web을 사용하여 Supabase Auth와 연계된 회원가입/로그인/로그아웃 시스템을 구축하는 방법을 설명합니다.
 
 ### 구현된 기능
-- ✅ 회원가입 (이메일/비밀번호)
-- ✅ 로그인/로그아웃
-- ✅ 비밀번호 재설정
-- ✅ JWT 토큰 기반 인증
-- ✅ 사용자 프로필 관리
-- ✅ 반응형 웹 UI
+- [x] 회원가입 (이메일/비밀번호)
+- [x] 로그인/로그아웃
+- [ ] 비밀번호 재설정
+- [x] JWT 토큰 기반 인증
+- [ ] 사용자 프로필 관리
+- [x] 반응형 웹 UI
 
 ## 기술 스택
 
@@ -30,8 +30,7 @@
 |------|------|------|------|
 | **프론트엔드** | Flutter | 3.32.8+ | 크로스 플랫폼 UI |
 | **상태 관리** | Provider | 6.1.5 | 상태 관리 |
-| **인증/DB** | Supabase | 최신 | 인증 및 데이터베이스 |
-| **개발 도구** | Flutter Web | - | 웹 개발 |
+| **인증/DB** | Supabase Flutter | 2.9.1 | 인증 및 데이터베이스 |
 
 ## 환경 설정
 
@@ -502,9 +501,7 @@ SUPABASE_ANON_KEY=your-anon-key
 flutter pub get
 
 # 웹 서버로 실행
-flutter run -d web-server --web-port 8080 \
-  --dart-define=SUPABASE_URL=$SUPABASE_URL \
-  --dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+cd .. && source .env && cd frontend && flutter run -d web-server --web-port 8080 --dart-define=SUPABASE_URL=$SUPABASE_URL --dart-define=SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
 ```
 
 ### 3. 브라우저에서 확인
@@ -515,13 +512,13 @@ flutter run -d web-server --web-port 8080 \
 
 ### 4. 기능 테스트 체크리스트
 
-- [ ] 회원가입 (이메일, 비밀번호, 이름)
-- [ ] 이메일 인증 (Supabase 대시보드에서 확인)
-- [ ] 로그인 (이메일, 비밀번호)
+- [x] 회원가입 (이메일, 비밀번호, 이름)
+- [x] 이메일 인증 (Supabase 대시보드에서 확인)
+- [x] 로그인 (이메일, 비밀번호)
 - [ ] 비밀번호 재설정
-- [ ] 로그아웃
-- [ ] 사용자 정보 표시
-- [ ] 반응형 UI (다양한 화면 크기)
+- [x] 로그아웃
+- [x] 사용자 정보 표시
+- [x] 반응형 UI (다양한 화면 크기)
 
 ## 배포
 
@@ -638,9 +635,7 @@ flutter build web --release --web-renderer html
 final SignInScreen = () => import('./screens/signin_screen.dart');
 ```
 
----
-
-## 📚 추가 리소스
+## 추가 리소스
 
 ### 공식 문서
 - [Flutter Web](https://flutter.dev/web)
@@ -668,5 +663,3 @@ final SignInScreen = () => import('./screens/signin_screen.dart');
 3. **이메일 템플릿** 커스터마이징
 4. **보안 강화** (2FA, 세션 관리)
 5. **모니터링 및 로깅** 추가
-
-Happy Coding! 🚀
